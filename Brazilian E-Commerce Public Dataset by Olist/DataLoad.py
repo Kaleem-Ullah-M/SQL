@@ -1,7 +1,8 @@
 
+
 import pandas as pd, glob, pyodbc,sqlalchemy;
 
-path = r"D:\Git\SQL\SQL_PROJECTS\Brazilian E-Commerce Public Dataset by Olist\Data\*.csv"
+path = r"D:\Git\SQL\SQL_PROJECTS\Brazilian E-Commerce Public Dataset by Olist\Raw_data\*.csv"
 
 # Getting list of csv files in the folder.
 csv_files = glob.glob(path)
@@ -11,15 +12,13 @@ dataframes = {file.split('\\')[-1]: pd.read_csv(file) for file in csv_files};
 
 print(dataframes.keys());
 
-# Data Already Cleaned and Normalized.
-
 # Loading into SQL server
 
 from sqlalchemy import create_engine
 
 # Inserting credentials
-server = '(localdb)\Local'
-database = 'Olist Ecommerce'
+server = r'(localdb)\Local'
+database = 'Olist_Ecommerce'
 
 # Windows Authentication connection
 engine = create_engine(
